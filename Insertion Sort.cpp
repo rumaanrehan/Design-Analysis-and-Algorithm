@@ -6,21 +6,27 @@ elements befor it. the comparison takes until the i-th element is greater than o
 Therefore, in eaach iteration of the algorithm the i-th element can take any positin from 0 to i-1 
 2. i-j 
 3. */
+void insert(int arr[], int i){
+    int t=i, key=arr[i];
+    for (int j=i-1;j>=0;j--)
+    {
+        if(key>arr[j])
+            break;
+        t=j;
+        
+    }
+    while(i>t){
+        arr[i]=arr[i-1];
+        i--;
+    }
+    arr[i]=key;
+}
 void insertionSort(int arr[], int n)
 {
     int i, key, j;
     for (i = 1; i < n; i++)
     {
-        key = arr[i];
-        j = i - 1;
- 
-        
-        while (j >= 0 && arr[j] > key)
-        {
-            arr[j + 1] = arr[j];
-            j = j - 1;
-        }
-        arr[j + 1] = key;
+        insert(arr,i);
     }
 }
 
